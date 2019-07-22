@@ -15,7 +15,7 @@ import (
 	"os/user"
 	"path"
 
-	"github.com/fogleman/nes/nes"
+	"github.com/johnzeng/nes/nes"
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
 )
@@ -31,7 +31,7 @@ func init() {
 }
 
 func thumbnailURL(hash string) string {
-	return "http://www.michaelfogleman.com/static/nes/" + hash + ".png"
+	return "http://www.michaeljohnzeng.com/static/nes/" + hash + ".png"
 }
 
 func thumbnailPath(hash string) string {
@@ -52,14 +52,14 @@ func readKey(window *glfw.Window, key glfw.Key) bool {
 
 func readKeys(window *glfw.Window, turbo bool) [8]bool {
 	var result [8]bool
-	result[nes.ButtonA] = readKey(window, glfw.KeyZ) || (turbo && readKey(window, glfw.KeyA))
-	result[nes.ButtonB] = readKey(window, glfw.KeyX) || (turbo && readKey(window, glfw.KeyS))
-	result[nes.ButtonSelect] = readKey(window, glfw.KeyRightShift)
-	result[nes.ButtonStart] = readKey(window, glfw.KeyEnter)
-	result[nes.ButtonUp] = readKey(window, glfw.KeyUp)
-	result[nes.ButtonDown] = readKey(window, glfw.KeyDown)
-	result[nes.ButtonLeft] = readKey(window, glfw.KeyLeft)
-	result[nes.ButtonRight] = readKey(window, glfw.KeyRight)
+	result[nes.ButtonA] = readKey(window, glfw.KeyJ) || (turbo && readKey(window, glfw.KeyU))
+	result[nes.ButtonB] = readKey(window, glfw.KeyK) || (turbo && readKey(window, glfw.KeyI))
+	result[nes.ButtonSelect] = readKey(window, glfw.KeyV)
+	result[nes.ButtonStart] = readKey(window, glfw.KeyB)
+	result[nes.ButtonUp] = readKey(window, glfw.KeyW)
+	result[nes.ButtonDown] = readKey(window, glfw.KeyS)
+	result[nes.ButtonLeft] = readKey(window, glfw.KeyA)
+	result[nes.ButtonRight] = readKey(window, glfw.KeyD)
 	return result
 }
 

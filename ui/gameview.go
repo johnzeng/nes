@@ -2,8 +2,12 @@ package ui
 
 import (
 	"image"
+	"image/png"
+	"os"
+	"strconv"
+	"time"
 
-	"github.com/fogleman/nes/nes"
+	"github.com/johnzeng/nes/nes"
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
 )
@@ -137,4 +141,13 @@ func updateControllers(window *glfw.Window, console *nes.Console) {
 	j2 := readJoystick(glfw.Joystick2, turbo)
 	console.SetButtons1(combineButtons(k1, j1))
 	console.SetButtons2(j2)
+	if readKey(window, glfw.KeyP) {
+		img := console.Buffer()
+		outputFile,err := os.Create("screenshot-" + strconv.FormatInt(time.Now().Unix(), 10) + ".png")
+		if err != nil{
+		}
+		png.Encode(outputFile, img);
+		outputFile.Close();
+
+	}
 }
